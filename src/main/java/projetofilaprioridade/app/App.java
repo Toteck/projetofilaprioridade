@@ -12,7 +12,10 @@ public class App {
 		minhaFila.inserirNaFila(25);
 		minhaFila.inserirNaFila(15);
 		minhaFila.inserirNaFila(12);
-		minhaFila.inserirNaFila(65);
+		minhaFila.inserirComPrioridade(65);
+		minhaFila.inserirComPrioridade(70);
+		minhaFila.imprimir();
+		minhaFila.removerDaFila();
 		minhaFila.imprimir();
 	
 	}

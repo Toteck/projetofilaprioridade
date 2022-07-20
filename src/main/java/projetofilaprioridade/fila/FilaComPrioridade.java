@@ -27,6 +27,37 @@ public class FilaComPrioridade {
 	}
 	
 	
+	public void inserirComPrioridade(int idade) throws IOException{
+		No novaPessoa = new No(idade); // Aloca espaço para o novo nó
+		No auxiliar = inicio;
+		if(isEmpty())
+			inicio = novaPessoa;
+		else {
+			if(idade > 59) {
+				
+				// é prioridade?
+				if (inicio.getIdade() < 60) {
+					novaPessoa.setProximo(inicio);
+					inicio = novaPessoa;
+				} else {
+					while(auxiliar.getProximo() != null && auxiliar.getProximo().getIdade() > 59)
+						auxiliar = auxiliar.getProximo();
+					novaPessoa.setProximo(auxiliar.getProximo());
+					auxiliar.setProximo(novaPessoa);
+				}
+				
+			} else {
+				
+				while(auxiliar.getProximo() != null) {
+					auxiliar = auxiliar.getProximo();
+				}
+				auxiliar.setProximo(novaPessoa);
+				
+			}
+		}
+	}
+	
+	
 	public No removerDaFila() {
 		No remover = null;
 		
