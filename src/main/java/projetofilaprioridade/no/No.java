@@ -28,6 +28,15 @@ public class No {
 		this.proximo = proximo;
 	}
 	
+	public int getGrupoIdade() {
+		return item.getGrupoIdade();
+	}
+	
+	public void setGrupoIdade(int idade) {
+		this.item.setGrupoIdade(idade);
+	}
+	
+	
 	
 	
 	
