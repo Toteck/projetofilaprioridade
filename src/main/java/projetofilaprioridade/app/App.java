@@ -8,14 +8,15 @@ public class App {
 
 	public static void main(String[] args)  throws IOException  {
 		FilaComPrioridade minhaFila = new FilaComPrioridade();
-		minhaFila.inserirNaFila(22);
-		minhaFila.inserirNaFila(25);
-		minhaFila.inserirNaFila(15);
-		minhaFila.inserirNaFila(12);
-		minhaFila.inserirComPrioridade(65);
-		minhaFila.inserirComPrioridade(70);
-		minhaFila.imprimir();
-		minhaFila.removerDaFila();
+		minhaFila.inserirNaFila("Mateus", 9);
+		minhaFila.inserirNaFila("João", 9);
+		minhaFila.inserirNaFila("Marcelo", 0);
+		minhaFila.inserirNaFila("Maria", 3);
+		minhaFila.inserirNaFila("Raimunda", 1);
+		minhaFila.inserirNaFila("Raimundo", 7);
+		minhaFila.inserirNaFila("Joana", 6);
+		minhaFila.inserirNaFila("Francisco", 5);
+		minhaFila.inserirNaFila("Carlos", 9);
 		minhaFila.imprimir();
 	
 	}
