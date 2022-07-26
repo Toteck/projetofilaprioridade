@@ -46,22 +46,27 @@ public class FilaComPrioridade {
 		if(inicio!=null) {
 			remover = inicio;
 			inicio = remover.getProximo();
+			System.out.println("Chamando: "+remover.getNome()+"\nPrioridade: "+remover.getGrupoPrioridade() );
+			System.out.println();
 		} else {
-			System.out.println("\tFila Vazia\n");
+			System.out.println("\tFila Vazia!!!\n");
 		}
 		return remover;
 	}
 	
 	
 	public void imprimir() {
-		No auxiliar = inicio;
-		System.out.println("--------- FILA ---------");
-		while(auxiliar!=null) {
-			System.out.println(auxiliar.getNome() + " - " + auxiliar.getGrupoPrioridade());
-			auxiliar = auxiliar.getProximo();	
+		if(inicio != null) {
+			No auxiliar = inicio;
+			System.out.println("\n--------- FILA ---------");
+			while(auxiliar!=null) {
+				System.out.println(auxiliar.getNome() + " - " + auxiliar.getGrupoPrioridade());
+				auxiliar = auxiliar.getProximo();	
+			}
+			System.out.print("\n--------- FIM FILA ---------\n\n");
+			}else
+				System.out.println("\tFila Vazia!!!");
 		}
-		System.out.print("\n--------- FIM FILA ---------");
-	}
 	
 	
 	public boolean isEmpty() {
