@@ -18,7 +18,7 @@ public class App {
 		int prioridade;
 		String nome;
 		
-		String menu = "MENU DE OPÇÕES:\n1: Adicionar na Fila\n2: Atendimento\n3: Mostrar Fila\n0: Encerrar";
+		String menu = "MENU DE OPÇÕES:\n1: Adicionar na Fila\n2: Atendimento\n3: Mostrar Fila\n4: Estatisticas parciais\n0: Encerrar";
 		String Info = "NIVEL DE PRIORIDADE\n0 - Deficiente\n1 - Idoso Centenario\n2 - Idoso Nonagenário\n3 - Idoso Octagenário\n4 - Idoso Septuagenário\n5 - Idoso Sexagenário\n6 - Gestante\n7 - Lactante\n8 - Pessoa Com Criança de Colo\n9 - Normal (Sem Prioridade)\n";
 		
 		System.out.println(Info);
@@ -63,11 +63,14 @@ public class App {
 			case 3:
 				minhaFila.imprimir();
 				break;
-				
+			case 4:
+				minhaFila.estatisticasParciais();
+				break;
 			default:
 				System.out.println("Opção inexistente!!");
 			}
 		}
+		minhaFila.estatisticasFinais();
 		System.out.println("Programa encerrado!!");
 		
 	sc.close();

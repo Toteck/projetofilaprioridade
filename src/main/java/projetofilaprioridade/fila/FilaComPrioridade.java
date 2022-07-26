@@ -8,13 +8,24 @@ public class FilaComPrioridade {
 
 	private No inicio;
 	private No fim;
-	private int tamanho;
+	private float tamanhoParcial;
+	private float qtdPrioritarioParcial;
+	private float qtdNormalParcial;
+	private float qtdTotalFinal;
+	private float qtdPrioritarioTotal;
+	private float qtdNormalFinal;
 	
 	
 	public FilaComPrioridade() {
 		this.inicio = null;
 		this.fim = null;
-		this.tamanho = 0;
+		this.tamanhoParcial = 0;
+		this.qtdPrioritarioParcial = 0;
+		this.qtdNormalParcial = 0;
+		this.qtdNormalFinal = 0;
+		this.qtdPrioritarioTotal = 0;
+		this.qtdTotalFinal = 0;
+		
 	}
 	
 	
@@ -37,7 +48,15 @@ public class FilaComPrioridade {
 			aux.setProximo(novaPessoa);
 			
 		}
-		tamanho++;
+		if(grupoPrioridade>=0 && grupoPrioridade<9) {
+			qtdPrioritarioParcial++;
+			qtdPrioritarioTotal++;
+		} else {
+			qtdNormalParcial++;
+			qtdNormalFinal++;
+		}
+		tamanhoParcial++;
+		qtdTotalFinal++;
 	}	
 
 	public No removerDaFila() {
@@ -68,13 +87,35 @@ public class FilaComPrioridade {
 				System.out.println("\tFila Vazia!!!");
 		}
 	
+	public void estatisticasParciais() {
+		if(!isEmpty()) {
+			System.out.println("--------------- ESTATISTICAS PARCIAIS ---------------");
+			System.out.printf("Tamanho atual da fila: %.0f\n", tamanhoParcial);
+			System.out.printf("Prioritários na fila: %% %.1f\n", (qtdPrioritarioParcial/tamanhoParcial)*100);
+			System.out.printf("Pessoas sem prioridade na fila: %% %.1f\n", (qtdNormalParcial/tamanhoParcial)*100);
+			System.out.println("-----------------------------------------------------");
+		} else {
+			System.out.println("Fila vazia!");
+		}
+	}
+	
+	public void estatisticasFinais() {
+		if(qtdTotalFinal!=0) {
+			System.out.println("--------------- ESTATISTICAS FINAIS ---------------");
+			System.out.printf("Quantidade de pessoas atendidas: %.0f\n", qtdTotalFinal);
+			System.out.printf("Prioritários na fila: %% %.1f\n", (qtdPrioritarioTotal/qtdTotalFinal)*100);
+			System.out.printf("Pessoas sem prioridade na fila: %% %.1f\n", (qtdNormalFinal/qtdTotalFinal)*100);
+			System.out.println("-----------------------------------------------------");
+		} else{
+			System.out.println("Não foi inserido ninguém na fila!");
+		}
+	}
+	
 	
 	public boolean isEmpty() {
 		return inicio == null;
 	}
-
-	public int getTamanho() {
-		return tamanho;
-	}
+	
+	
 	
 }
