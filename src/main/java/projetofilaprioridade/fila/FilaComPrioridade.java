@@ -41,7 +41,7 @@ public class FilaComPrioridade {
 			inicio = novaPessoa;
 		} else {
 			aux = inicio;
-			while(aux.getProximo() != null && novaPessoa.getGrupoPrioridade() > aux.getProximo().getGrupoPrioridade()) {
+			while(aux.getProximo() != null && novaPessoa.getGrupoPrioridade() >= aux.getProximo().getGrupoPrioridade()) {
 				aux = aux.getProximo();
 			}
 			novaPessoa.setProximo(aux.getProximo());
@@ -63,13 +63,19 @@ public class FilaComPrioridade {
 		No remover = null;
 		
 		if(inicio!=null) {
+			if(inicio.getGrupoPrioridade()==9)
+				qtdNormalParcial--;
+			else
+				qtdPrioritarioParcial--;
+				
 			remover = inicio;
 			inicio = remover.getProximo();
 			System.out.println("Chamando: "+remover.getNome()+"\nPrioridade: "+remover.getGrupoPrioridade() );
 			System.out.println();
 		} else {
-			System.out.println("\tFila Vazia!!!\n");
+			System.out.println("Fila Vazia!!!\n");
 		}
+		tamanhoParcial--;
 		return remover;
 	}
 	
@@ -91,8 +97,8 @@ public class FilaComPrioridade {
 		if(!isEmpty()) {
 			System.out.println("--------------- ESTATISTICAS PARCIAIS ---------------");
 			System.out.printf("Tamanho atual da fila: %.0f\n", tamanhoParcial);
-			System.out.printf("Prioritários na fila: %% %.1f\n", (qtdPrioritarioParcial/tamanhoParcial)*100);
-			System.out.printf("Pessoas sem prioridade na fila: %% %.1f\n", (qtdNormalParcial/tamanhoParcial)*100);
+			System.out.printf("Prioritários na fila: %.0f - %% %.1f\n", qtdPrioritarioParcial, (qtdPrioritarioParcial/tamanhoParcial)*100);
+			System.out.printf("Pessoas sem prioridade na fila: %.0f - %% %.1f\n", qtdNormalParcial, (qtdNormalParcial/tamanhoParcial)*100);
 			System.out.println("-----------------------------------------------------");
 		} else {
 			System.out.println("Fila vazia!");
@@ -103,8 +109,8 @@ public class FilaComPrioridade {
 		if(qtdTotalFinal!=0) {
 			System.out.println("--------------- ESTATISTICAS FINAIS ---------------");
 			System.out.printf("Quantidade de pessoas atendidas: %.0f\n", qtdTotalFinal);
-			System.out.printf("Prioritários na fila: %% %.1f\n", (qtdPrioritarioTotal/qtdTotalFinal)*100);
-			System.out.printf("Pessoas sem prioridade na fila: %% %.1f\n", (qtdNormalFinal/qtdTotalFinal)*100);
+			System.out.printf("Com prioridade: %.0f - %% %.1f\n", qtdPrioritarioTotal, (qtdPrioritarioTotal/qtdTotalFinal)*100);
+			System.out.printf("Sem prioridade: %.0f - %% %.1f\n", qtdNormalFinal, (qtdNormalFinal/qtdTotalFinal)*100);
 			System.out.println("-----------------------------------------------------");
 		} else{
 			System.out.println("Não foi inserido ninguém na fila!");
